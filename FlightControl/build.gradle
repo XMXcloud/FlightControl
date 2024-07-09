@@ -22,7 +22,7 @@ dependencies {
     compileOnly ('net.essentialsx:EssentialsX:2.20.1') { exclude(group: "*") }
 
     // Territories
-    compileOnly ('com.sk89q.worldedit:worldedit-bukkit:7.3.0-SNAPSHOT') {
+    compileOnly ('com.sk89q.worldedit:worldedit-bukkit:7.4.0-SNAPSHOT') {
         exclude group: 'com.google.code.gson', module: 'gson'
     }
     compileOnly ("com.intellectualsites.plotsquared:plotsquared-core") { exclude(group: "*") }

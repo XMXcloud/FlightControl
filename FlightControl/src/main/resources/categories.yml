@@ -2,38 +2,38 @@
 # / __| |___| |__  __ _| |
 # | (_ | / _ \ '_ \/ _` | |
 # \___|_\___/_.__/\__,_|_|
-# The "global" category applies to ALL players without permission for another category.
+# A categoria "global" aplica-se a TODOS os jogadores sem permissão para outra categoria.
 global:
   worlds:
-    # Replace with real worlds.
-    enable: [WORLDNAME, WORLDNAME2]
-    # ONLY USE THE "disable" SECTION TO OVERRIDE AREAS/SETTINGS WITH ENABLED FLIGHT
+    # Substitua pelos nomes reais dos mundos.
+    enable: [NOME_DO_MUNDO, NOME_DO_MUNDO2]
+    # USE A SEÇÃO "disable" APENAS PARA SOBRESCREVER ÁREAS/CONFIGURAÇÕES COM VOO HABILITADO
     disable: []
-  # "regions" requires WorldEdit & WorldGuard.
+  # "regions" requer WorldEdit e WorldGuard.
   regions:
     enable:
-      # Replace with real worlds and regions.
-      WORLDNAME3: [REGIONNAME, REGIONNAME2]
-      WORLDNAME4: [REGIONNAME3]
-    # ONLY USE THE "disable" SECTION TO OVERRIDE AREAS/SETTINGS WITH ENABLED FLIGHT
+      # Substitua pelos mundos e regiões reais.
+      NOME_DO_MUNDO3: [NOME_DA_REGIAO, NOME_DA_REGIAO2]
+      NOME_DO_MUNDO4: [NOME_DA_REGIAO3]
+    # USE A SEÇÃO "disable" APENAS PARA SOBRESCREVER ÁREAS/CONFIGURAÇÕES COM VOO HABILITADO
     disable: []
-  # There are eight types of faction territories (OWN, ALLY, TRUCE, NEUTRAL, ENEMY, WARZONE, SAFEZONE, WILDERNESS).
-  # OWN enables flight in the player's own faction territory.
+  # Existem oito tipos de territórios de facção (OWN, ALLY, TRUCE, NEUTRAL, ENEMY, WARZONE, SAFEZONE, WILDERNESS).
+  # OWN habilita o voo no território da própria facção do jogador.
   factions:
     enable: [OWN, ALLY]
-    # ONLY USE THE "disable" SECTION TO OVERRIDE AREAS/SETTINGS WITH ENABLED FLIGHT
+    # USE A SEÇÃO "disable" APENAS PARA SOBRESCREVER ÁREAS/CONFIGURAÇÕES COM VOO HABILITADO
     disable: []
-  # Disable/enable flight in certain plugin territories
-  # Supports: GriefPrevention, Lands, PlotSquared, TownyTown, TownyNation,
-  #           RedProtect, BentoBox (island), WorldGuard, Residence,
-  #           SuperiorSkyblock2, GriefDefender, CrashClaim, ProtectionStones
+  # Desabilitar/habilitar voo em certos territórios de plugins
+  # Suporta: GriefPrevention, Lands, PlotSquared, TownyTown, TownyNation,
+  #          RedProtect, BentoBox (ilha), WorldGuard, Residence,
+  #          SuperiorSkyblock2, GriefDefender, CrashClaim, ProtectionStones
   territory:
     enable:
-      # Enable/Disable in player's own territory
+      # Habilitar/Desabilitar no próprio território do jogador
       own: [Lands, Towny]
-      # Enable/Disable in territory that player is a member of
+      # Habilitar/Desabilitar em território onde o jogador é membro
       trusted: [PlotSquared]
-    # ONLY USE THE "disable" SECTION TO OVERRIDE AREAS/SETTINGS WITH ENABLED FLIGHT
+    # USE A SEÇÃO "disable" APENAS PARA SOBRESCREVER ÁREAS/CONFIGURAÇÕES COM VOO HABILITADO
     disable: []
 
 #    ___      _                    _
@@ -41,34 +41,34 @@ global:
 #  | (__/ _` |  _/ -_) _` / _ \ '_| / -_|_-<
 #  \___\__,_|\__\___\__, \___/_| |_\___/__/
 #                   |___/
-# These are individual categories
+# Estas são categorias individuais
 categories:
-  # "vip" is a category. Its permission is "flightcontrol.category.vip"
-  # You can change the category names, but make sure they are only LETTERS or NUMBERS.
+  # "vip" é uma categoria. Sua permissão é "flightcontrol.category.vip"
+  # Você pode alterar os nomes das categorias, mas certifique-se de usar apenas LETRAS ou NÚMEROS.
   vip:
-    # The highest priority category is applied to the player.
+    # A categoria com maior prioridade é aplicada ao jogador.
     priority: 2
     worlds:
-      enable: [WORLDNAME, WORLDNAME2]
+      enable: [NOME_DO_MUNDO, NOME_DO_MUNDO2]
     regions:
       enable:
-        WORLDNAME3: [REGIONNAME, REGIONNAME2]
-        WORLDNAME4: [REGIONNAME3]
+        NOME_DO_MUNDO3: [NOME_DA_REGIAO, NOME_DA_REGIAO2]
+        NOME_DO_MUNDO4: [NOME_DA_REGIAO3]
     factions:
       enable: [WILDERNESS]
     territory:
       enable:
         own: [Lands, Towny]
         trusted: [PlotSquared]
-  # "mvp" is another category. Its permission is "flightcontrol.category.mvp"
+  # "mvp" é outra categoria. Sua permissão é "flightcontrol.category.mvp"
   mvp:
     priority: 1
     worlds:
-      enable: [WORLDNAME, WORLDNAME2]
+      enable: [NOME_DO_MUNDO, NOME_DO_MUNDO2]
     regions:
       enable:
-        WORLDNAME3: [REGIONNAME, REGIONNAME2]
-        WORLDNAME4: [REGIONNAME3]
+        NOME_DO_MUNDO3: [NOME_DA_REGIAO, NOME_DA_REGIAO2]
+        NOME_DO_MUNDO4: [NOME_DA_REGIAO3]
     factions:
       enable: [WILDERNESS]
     territory:

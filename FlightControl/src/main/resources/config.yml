@@ -3,63 +3,63 @@
 # | _|| | / _` | ' \  _| (__/ _ \ ' \  _| '_/ _ \ |
 # |_| |_|_\__, |_||_\__|\___\___/_||_\__|_| \___/_|
 #         |___/
-# Donate: https://geofang.com/donate
+# Doar: https://geofang.com/donate
 # Discord: https://geofang.com/discord
-# Spigot Page: https://www.spigotmc.org/resources/flightcontrol.55168/
+# Página Spigot: https://www.spigotmc.org/resources/flightcontrol.55168/
 
 settings:
-  # Updates the config automatically and adds new features
+  # Atualiza a configuração automaticamente e adiciona novos recursos
   auto_update: true
-  # Automatically reloads the config when changes are saved
+  # Recarrega automaticamente a configuração quando as alterações são salvas
   auto_reload: true
-  # Allows the /fly command to be changed to a different command name (e.g. /votefly)
+  # Permite que o comando /fly seja alterado para outro nome de comando (ex: /votefly)
   fly_command_name: "fly"
-  # Enables flight automatically (no command necessary)
+  # Habilita o voo automaticamente (sem necessidade de comando)
   auto_enable_flight: true
-  # The default speed is 1.0 and matches Essentials's /flyspeed values (0-10)
+  # A velocidade padrão é 1.0 e corresponde aos valores do /flyspeed do Essentials (0-10)
   flight_speed: 1.0
-  # The maximum flight speed a user can set using /flyspeed (cannot be higher than 10)
+  # A velocidade máxima de voo que um usuário pode definir usando /flyspeed (não pode ser maior que 10)
   max_flight_speed: 1.0
-  # Disables flight past the block height limit
+  # Desabilita o voo acima do limite de altura de blocos
   height_limit: -1
-  # Supports: CombatLogX, DeluxeCombat
-  # NOTE: disable flight disabling/enabling in the combat plugin's config to prevent issues
+  # Suporta: CombatLogX, DeluxeCombat
+  # NOTA: desabilite o desligamento/habilitação de voo na configuração do plugin de combate para evitar problemas
   disable_flight_in_combat: false
-  # Prevents fall damage when flight is disabled mid-air by FlightControl
+  # Previne dano de queda quando o voo é desabilitado no ar pelo FlightControl
   prevent_fall_damage: false
-  # Supports: EssentialsX, PremiumVanish, SuperVanish
-  # Prevents flight disabling while in vanish
+  # Suporta: EssentialsX, PremiumVanish, SuperVanish
+  # Previne desabilitação do voo enquanto estiver invisível
   vanish_bypass: true
 
 tempfly:
-  # Should tempfly decrease even when the player isn't flying?
+  # O tempfly deve diminuir mesmo quando o jogador não está voando?
   always_decrease: true
 
-# NOTE: this feature is resource intensive and may cause performance issues
+# NOTA: este recurso é intensivo em recursos e pode causar problemas de desempenho
 nearby_disable:
-  # Disables flight when a player is within a certain block range (set to -1 to disable)
+  # Desabilita o voo quando um jogador está dentro de um certo alcance de blocos (defina como -1 para desabilitar)
   range: -1
-  # Supports: FactionsUUID
-  # Makes the "range" setting only for faction enemies
+  # Suporta: FactionsUUID
+  # Faz a configuração "range" funcionar apenas para inimigos de facção
   factions_enemy: true
 
 trail:
   enabled: false
-  # 1.8 Particle Info: https://geofang.com/flightcontrol/particles/1
-  # 1.15 Particle Info: https://geofang.com/flightcontrol/particles/2
+  # Informações de Partículas 1.8: https://geofang.com/flightcontrol/particles/1
+  # Informações de Partículas 1.15: https://geofang.com/flightcontrol/particles/2
   particle: "CLOUD"
   amount: 2
-  # Please look at the particle info links above to know which particles can change color
-  # Color picker (RBG): https://www.google.com/search?q=color+picker
+  # Por favor, veja os links de informações de partículas acima para saber quais partículas podem mudar de cor
+  # Seletor de cor (RGB): https://www.google.com/search?q=color+picker
   rgb: "0,0,0"
 
 sounds:
-  # Plays the sounds on EVERY double tap of the space bar
+  # Toca os sons a CADA duplo toque na barra de espaço
   every_enable: false
   every_disable: false
-  # Please use the sound names from the "Sound Event" column
-  # 1.8 List: https://minecraft.gamepedia.com/Sounds.json/Java_Edition_values_before_1.9
-  # Current (1.21) List: https://minecraft.gamepedia.com/Sounds.json/Java_Edition_values
+  # Por favor, use os nomes de som da coluna "Sound Event"
+  # Lista 1.8: https://minecraft.gamepedia.com/Sounds.json/Java_Edition_values_before_1.9
+  # Lista Atual (1.21): https://minecraft.gamepedia.com/Sounds.json/Java_Edition_values
   enable:
     sound: "NONE"
     pitch: 1
@@ -68,8 +68,8 @@ sounds:
     sound: "NONE"
     pitch: 1
     volume: 1
-  # "can_enable" and "cannot_enable" are used when "auto_enable" is false
-  # or if the player disables their own flight with /fly
+  # "can_enable" e "cannot_enable" são usados quando "auto_enable" é false
+  # ou se o jogador desabilita seu próprio voo com /fly
   can_enable:
     sound: "NONE"
     pitch: 1

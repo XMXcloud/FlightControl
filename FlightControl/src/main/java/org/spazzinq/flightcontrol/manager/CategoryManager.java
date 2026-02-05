@@ -35,10 +35,14 @@ import java.util.TreeMap;
 public class CategoryManager {
     private final FlightControl pl;
 
-    @Getter private CommentConf conf;
-    @Getter private final File categoryFile;
-    @Getter private final ArrayList<Category> categories = new ArrayList<>();
-    @Getter private Category global;
+    @Getter
+    private CommentConf conf;
+    @Getter
+    private final File categoryFile;
+    @Getter
+    private final ArrayList<Category> categories = new ArrayList<>();
+    @Getter
+    private Category global;
 
     public CategoryManager() {
         pl = FlightControl.getInstance();
@@ -67,8 +71,8 @@ public class CategoryManager {
         if (categoriesSection != null) {
             for (String categoryName : categoriesSection.getKeys(false)) {
                 categories.add(
-                        loadCategory(categoryName.toLowerCase(), categoriesSection.getConfigurationSection(categoryName))
-                );
+                        loadCategory(categoryName.toLowerCase(),
+                                categoriesSection.getConfigurationSection(categoryName)));
             }
         }
 
@@ -85,15 +89,18 @@ public class CategoryManager {
         DualStore<Region> regions = loadRegions(name, category.getConfigurationSection("regions"), checks);
         DualStore<FactionRelation> factions = loadFactions(name, category.getConfigurationSection("factions"), checks);
 
-        DualStore<Check> ownTerritories = loadTerritoryTypes(name, category.getConfigurationSection("territory"), checks, "own");
-        DualStore<Check> trustedTerritories = loadTerritoryTypes(name, category.getConfigurationSection("territory"), checks, "trusted");
+        DualStore<Check> ownTerritories = loadTerritoryTypes(name, category.getConfigurationSection("territory"),
+                checks, "own");
+        DualStore<Check> trustedTerritories = loadTerritoryTypes(name, category.getConfigurationSection("territory"),
+                checks, "trusted");
 
         int priority = "global".equals(name) ? -1 : category.getInt("priority");
 
         return new Category(name, checks, worlds, regions, factions, ownTerritories, trustedTerritories, priority);
     }
 
-    private DualStore<World> loadWorlds(String categoryName, ConfigurationSection worldsSection, DualStore<Check> checks) {
+    private DualStore<World> loadWorlds(String categoryName, ConfigurationSection worldsSection,
+            DualStore<Check> checks) {
         DualStore<World> worlds = new DualStore<>();
 
         if (worldsSection != null) {
@@ -131,7 +138,7 @@ public class CategoryManager {
     }
 
     private DualStore<Region> loadRegions(String categoryName, ConfigurationSection regionsSection,
-                                          DualStore<Check> checks) {
+            DualStore<Check> checks) {
         DualStore<Region> regions = new DualStore<>();
 
         if (regionsSection != null) {
@@ -164,10 +171,12 @@ public class CategoryManager {
             }
 
             if (!regions.isEnabledEmpty()) {
-                checks.addEnabled(new CategoryRegionCheck(pl.getHookManager().getWorldGuardHook(), regions.getEnabled()));
+                checks.addEnabled(
+                        new CategoryRegionCheck(pl.getHookManager().getWorldGuardHook(), regions.getEnabled()));
             }
             if (!regions.isDisabledEmpty()) {
-                checks.addDisabled(new CategoryRegionCheck(pl.getHookManager().getWorldGuardHook(), regions.getDisabled()));
+                checks.addDisabled(
+                        new CategoryRegionCheck(pl.getHookManager().getWorldGuardHook(), regions.getDisabled()));
             }
         }
 
@@ -175,7 +184,7 @@ public class CategoryManager {
     }
 
     private DualStore<FactionRelation> loadFactions(String categoryName, ConfigurationSection factionsSection,
-                                                    DualStore<Check> checks) {
+            DualStore<Check> checks) {
         DualStore<FactionRelation> factions = new DualStore<>();
 
         if (factionsSection != null) {
@@ -206,9 +215,12 @@ public class CategoryManager {
         return factions;
     }
 
-    private DualStore<Check> loadTerritoryTypes(String categoryName, ConfigurationSection territorySection, DualStore<Check> checks, String type) {
+    private DualStore<Check> loadTerritoryTypes(String categoryName, ConfigurationSection territorySection,
+            DualStore<Check> checks, String type) {
         DualStore<Check> territories = new DualStore<>();
-        TreeMap<String, TerritoryCheck> territoryChecks = "own".equals(type) ? pl.getCheckManager().getOwnTerritoryChecks() : pl.getCheckManager().getTrustedTerritoryChecks();
+        TreeMap<String, TerritoryCheck> territoryChecks = "own".equals(type)
+                ? pl.getCheckManager().getOwnTerritoryChecks()
+                : pl.getCheckManager().getTrustedTerritoryChecks();
 
         if (territorySection != null) {
             ConfigurationSection enable = territorySection.getConfigurationSection("enable");
@@ -220,7 +232,8 @@ public class CategoryManager {
                     if (check != null) {
                         territories.addEnabled(check);
                     } else {
-                        nonexistent(categoryName, "territory", "enabled check", territory, "Is the plugin supported and installed on the server?");
+                        nonexistent(categoryName, "territory", "enabled check", territory,
+                                "Is the plugin supported and installed on the server?");
                     }
                 }
             }
@@ -231,7 +244,8 @@ public class CategoryManager {
                     if (check != null) {
                         territories.addDisabled(territoryChecks.get(territory));
                     } else {
-                        nonexistent(categoryName, "territory", "disabled check", territory, "Is the plugin supported and installed on the server?");
+                        nonexistent(categoryName, "territory", "disabled check", territory,
+                                "Is the plugin supported and installed on the server?");
                     }
                 }
             }
@@ -248,8 +262,8 @@ public class CategoryManager {
     }
 
     private void nonexistent(String category, String section, String type, String error, String extra) {
-        // Ignore examples
-        if (!error.contains("WORLDNAME")) {
+        // Ignore examples (English and Portuguese)
+        if (!error.contains("WORLDNAME") && !error.contains("NOME_DO_MUNDO") && !error.contains("NOME_DA_REGIAO")) {
             pl.getLogger().warning("Category \"" + category + "\" in section \"" + section + "\" contains " +
                     "non-existent " + type + " \"" + error + ".\" " + extra);
         }
@@ -260,7 +274,7 @@ public class CategoryManager {
         for (Category category : getCategories()) {
             if (PlayerUtil.hasPermissionCategory(p, category)
                     || PlayerUtil.hasPermissionTempfly(p, category)
-                    && pl.getPlayerManager().getFlightPlayer(p).getTempflyTimer().hasTimeLeft()) {
+                            && pl.getPlayerManager().getFlightPlayer(p).getTempflyTimer().hasTimeLeft()) {
                 return category;
             }
         }
@@ -269,9 +283,10 @@ public class CategoryManager {
     }
 
     private void migrateFromVersion4() {
-        pl.getLogger().severe("The categories.yml updated to a new format, and FlightControl could not migrate the data. Please reconfigure your categories.yml!");
+        pl.getLogger().severe(
+                "The categories.yml updated to a new format, and FlightControl could not migrate the data. Please reconfigure your categories.yml!");
         try {
-            //noinspection UnstableApiUsage
+            // noinspection UnstableApiUsage
             Files.move(categoryFile, new File(pl.getDataFolder(), "categories_old.yml"));
         } catch (IOException e) {
             e.printStackTrace();

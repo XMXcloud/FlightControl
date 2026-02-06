@@ -231,10 +231,9 @@ public class CategoryManager {
                     Check check = territoryChecks.get(territory);
                     if (check != null) {
                         territories.addEnabled(check);
-                    } else {
-                        nonexistent(categoryName, "territory", "enabled check", territory,
-                                "Is the plugin supported and installed on the server?");
                     }
+                    // Silently ignore territory plugins that are not installed
+                    // This is expected behavior for template configurations
                 }
             }
 
@@ -243,10 +242,9 @@ public class CategoryManager {
                     Check check = territoryChecks.get(territory);
                     if (check != null) {
                         territories.addDisabled(territoryChecks.get(territory));
-                    } else {
-                        nonexistent(categoryName, "territory", "disabled check", territory,
-                                "Is the plugin supported and installed on the server?");
                     }
+                    // Silently ignore territory plugins that are not installed
+                    // This is expected behavior for template configurations
                 }
             }
         }

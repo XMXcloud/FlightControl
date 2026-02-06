@@ -1,4 +1,4 @@
-name: FlightControl
+name: FlightControlX
 main: org.spazzinq.flightcontrol.FlightControl
 version: ${revision}
 api-version: "1.13"

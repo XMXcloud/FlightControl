@@ -14,17 +14,25 @@ import org.spazzinq.flightcontrol.FlightControl;
 import java.util.List;
 
 public class Reward extends BukkitRunnable {
-    @Getter private final Category category;
-    @Getter private final List<String> commands;
+    @Getter
+    private final Category category;
+    @Getter
+    private final List<String> commands;
 
-    @Override public void run() {
-//        FlightControl.getInstance().getLogger().info("Running reward");
+    @Override
+    public void run() {
+        // FlightControl.getInstance().getLogger().info("Running reward");
         for (Player p : Bukkit.getOnlinePlayers()) {
-//            FlightControl.getInstance().getLogger().info("Found " + p.getName());
+            // FlightControl.getInstance().getLogger().info("Found " + p.getName());
             if (category == FlightControl.getInstance().getCategoryManager().getCategory(p)) {
                 for (String command : commands) {
-//                    FlightControl.getInstance().getLogger().info("Running command " + command.replaceAll("%player%", p.getName()));
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replaceAll("%player%", p.getName()));
+                    if (command == null || command.trim().isEmpty()) {
+                        continue;
+                    }
+                    String parsedCommand = command.replaceAll("%player%", p.getName()).trim();
+                    if (!parsedCommand.isEmpty()) {
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), parsedCommand);
+                    }
                 }
             }
         }
